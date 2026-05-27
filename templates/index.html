@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="jarvis-token" content="{{ csrf_token }}">
+  <title>{{ app_name }} Command Deck</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="background-grid"></div>
+  <div class="background-orb background-orb-left"></div>
+  <div class="background-orb background-orb-right"></div>
+
+  <main class="shell">
+    <section class="hero panel">
+      <div>
+        <p class="eyebrow">Local Agent Command Deck</p>
+        <h1>Jarvis</h1>
+        <p class="hero-copy">
+          A local-first assistant that can act on your computer, remember what happened, and stay fast enough for a modest laptop.
+        </p>
+      </div>
+      <div class="hero-status">
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          <span id="model-name">{{ model_name }}</span>
+        </div>
+        <div class="status-badge status-badge-alt">
+          <span class="status-dot status-dot-voice"></span>
+          <span id="voice-status">Checking voice...</span>
+        </div>
+        <button id="voice-toggle" class="voice-toggle" type="button">Voice On</button>
+      </div>
+    </section>
+
+    <section class="layout">
+      <aside class="rail rail-left">
+        <div class="panel panel-soft stagger">
+          <div class="panel-head">
+            <h2>Profile</h2>
+            <span class="panel-kicker">Personal layer</span>
+          </div>
+          <div id="profile-card" class="meta-list"></div>
+        </div>
+
+        <div class="panel panel-soft stagger">
+          <div class="panel-head">
+            <h2>Quick Missions</h2>
+            <span class="panel-kicker">One-tap prompts</span>
+          </div>
+          <div class="chip-stack">
+            <button class="chip" data-prompt="Open my browser and search for AI internships in Bangalore">Internship search</button>
+            <button class="chip" data-prompt="What did I do recently?">Recent activity</button>
+            <button class="chip" data-prompt="Create task update my resume tomorrow">Resume reminder</button>
+            <button class="chip" data-prompt="Write note today I want to practice DSA for 1 hour">Daily note</button>
+          </div>
+        </div>
+
+        <div class="panel panel-soft stagger">
+          <div class="panel-head">
+            <h2>Memory Vault</h2>
+            <span class="panel-kicker">Saved facts</span>
+          </div>
+          <div id="facts-list" class="timeline compact"></div>
+        </div>
+      </aside>
+
+      <section class="console panel stagger">
+        <div class="console-head">
+          <div>
+            <p class="eyebrow">Mission Console</p>
+            <h2>Speak or type what you want done</h2>
+          </div>
+          <button id="mic-button" class="mic-button" type="button" aria-label="Start voice input">Mic</button>
+        </div>
+
+        <div id="transcript" class="transcript"></div>
+
+        <form id="chat-form" class="composer">
+          <textarea id="prompt-input" placeholder="Example: Open my browser and search for product design internships near me, then remember that I applied to one." rows="3"></textarea>
+          <div class="composer-actions">
+            <button id="send-button" class="send-button" type="submit">Launch</button>
+          </div>
+        </form>
+      </section>
+
+      <aside class="rail rail-right">
+        <div class="panel panel-soft stagger">
+          <div class="panel-head">
+            <h2>Mission Log</h2>
+            <span class="panel-kicker">Recent actions</span>
+          </div>
+          <div id="activity-list" class="timeline"></div>
+        </div>
+
+        <div class="panel panel-soft stagger">
+          <div class="panel-head">
+            <h2>Task Queue</h2>
+            <span class="panel-kicker">Open commitments</span>
+          </div>
+          <div id="task-list" class="task-list"></div>
+        </div>
+
+        <div class="panel panel-soft stagger">
+          <div class="panel-head">
+            <h2>Ingest Data</h2>
+            <span class="panel-kicker">Teach Jarvis your files</span>
+          </div>
+          <form id="ingest-form" class="ingest-form">
+            <input id="ingest-path" type="text" placeholder="C:\Users\LENOVO\Documents">
+            <button type="submit" class="secondary-button">Ingest</button>
+          </form>
+          <p id="ingest-status" class="mini-copy"></p>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <script src="/static/app.js?v=2" defer></script>
+</body>
+</html>

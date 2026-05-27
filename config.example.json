@@ -1,0 +1,21 @@
+{
+  "ollama_base_url": "http://127.0.0.1:11434",
+  "main_model": "qwen2.5:0.5b",
+  "coder_model": "qwen2.5-coder:1.5b",
+  "vision_model": "qwen2.5vl:3b",
+  "allow_unsafe_shell": false,
+  "confirm_file_changes": true,
+  "max_steps": 6,
+  "server_host": "127.0.0.1",
+  "server_port": 8765,
+  "preferred_browser": "chrome",
+  "allowed_apps": [
+    "notepad",
+    "calc",
+    "mspaint",
+    "chrome",
+    "msedge",
+    "code",
+    "whatsapp"
+  ]
+}
